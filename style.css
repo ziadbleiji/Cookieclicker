@@ -1,0 +1,28 @@
+.Top-sectie{
+margin-top: 5px;
+align-items: center;
+display: flex;
+justify-content: center;
+}
+.body{
+    background-color:#f0c14b;
+    font-family: Arial, sans-serif;
+}
+.button-menu{
+    display: flex;
+    justify-content: flex-begin;
+    align-items: flex-begin;
+    margin-top: none;
+}
+.main{
+    margin-left: 20px;
+}
+.cookie-button{
+    font-size: 50px;
+    border-radius: 50%;
+    background-color: #f0c14b;
+    border: none;
+    margin: 50px;
+    cursor: pointer;
+   size: 1000px;
+}
