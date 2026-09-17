@@ -1,28 +1,83 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  text-align: center;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  margin: 0;
+  padding: 50px 20px;
+  user-select: none; /* Voorkomt tekstselectie bij snel klikken */
+}
+
 .Top-sectie{
-margin-top: 5px;
-align-items: center;
-display: flex;
-justify-content: center;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.body{
-    background-color:#f0c14b;
-    font-family: Arial, sans-serif;
-}
+
 .button-menu{
-    display: flex;
-    justify-content: flex-begin;
-    align-items: flex-begin;
-    margin-top: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 0;
 }
+
 .main{
-    margin-left: 20px;
+  margin-left: 20px;
 }
-.cookie-button{
-    font-size: 50px;
-    border-radius: 50%;
-    background-color: #f0c14b;
-    border: none;
-    margin: 50px;
-    cursor: pointer;
-   size: 1000px;
+
+.game-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Support both class names used in branches */
+.cookie-btn, .cookie-button {
+  font-size: 100px;
+  border-radius: 50%;
+  background-color: #f0c14b;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  outline: none;
+  margin: 50px;
+}
+
+.cookie-btn:active {
+  transform: scale(0.9);
+}
+
+.stats {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.shop {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.upgrade-btn {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-family: inherit;
+  cursor: pointer;
+  background-color: #e67e22;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.upgrade-btn:hover:not(:disabled) {
+  background-color: #d35400;
+}
+
+.upgrade-btn:disabled {
+  background-color: #7f8c8d;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
 }
