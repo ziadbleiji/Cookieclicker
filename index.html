@@ -1,31 +1,19 @@
-<!DOCTYPE html>
+                <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Koekjes Klikker</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+   
+    <title>Cookie Clicker</title>
 </head>
-<body>
-
-  <div class="game-container">
-    <h1>Koekjes Klikker!</h1>
-    
-    <div class="stats">
-      Koekjes: <span id="cookie-count">0</span>
+<body class="body">
+   <main class="main">
+    <div class="container">
+        <h1>Crazy John Cookie Farm</h1>
+        <p>Click the cookie to earn cookies!</p>
+        <button id="cookie-button" class="cookie-button">🍪</button>
+        <p>Cookies: <span id="cookie-count">0</span></p>
     </div>
+    <script src="script.js"></script>
 
-    <!-- Hoofdknop om te klikken -->
-    <button id="cookie" class="cookie-btn">🍪</button>
-
-    <div class="shop">
-      <button id="buy-clicker" class="upgrade-btn">
-        Koop Automatische Klikker (+1 per seconde)<br>
-        Prijs: <span id="autoclicker-cost">15</span> koekjes
-      </button>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
