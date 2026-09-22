@@ -1,61 +1,287 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
 body {
-  font-family: Tahoma, Arial, sans-serif;
-  text-align: center;
-  background-color: #2c3e50;
-  color: #ecf0f1;
-  margin: 0;
-  padding: 50px 20px;
-  user-select: none; /* Voorkomt tekstselectie bij snel klikken */
+    font-family: Arial, sans-serif;
+
+    background: #f5e6c8;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.game-container {
-  max-width: 500px;
-  margin: 0 auto;
+
+.game {
+    width: 900px;
+    max-width: 95%;
+
+    min-height: 600px;
+
+    background: #fff8ec;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.2);
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    overflow: hidden;
 }
 
-.cookie-btn {
-  font-size: 300px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.1s ease;
-  outline: none;
+
+/* LEFT SIDE */
+
+.left {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 40px;
+
+    border-right:
+        2px solid #ead8bd;
 }
 
-.cookie-btn:active {
-  transform: scale(0.9);
+
+h1 {
+    color: #7b4b25;
+
+    margin-bottom: 15px;
 }
 
-.stats {
-  font-size: 28px;
-  font-weight: bold;
-  margin: 20px 0;
+
+#counter {
+    font-size: 32px;
+
+    font-weight: bold;
+
+    color: #4d2e17;
+
+    margin-bottom: 10px;
 }
+
+
+#perSecond {
+    color: #8a6a4a;
+
+    margin-bottom: 30px;
+}
+
+
+/* COOKIE */
+
+#cookie {
+    width: 230px;
+    height: 230px;
+
+    border-radius: 50%;
+
+    background: #b86b32;
+
+    border:
+        12px solid #7b421e;
+
+    cursor: pointer;
+
+    position: relative;
+
+    box-shadow:
+        inset -10px -12px
+        0 rgba(0, 0, 0, 0.12),
+
+        0 12px 20px
+        rgba(0, 0, 0, 0.2);
+
+    transition:
+        transform 0.08s;
+}
+
+
+#cookie:active {
+    transform: scale(0.93);
+}
+
+
+/* CHOCOLATE CHIPS */
+
+.chip {
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+
+    background: #4a2412;
+
+    border-radius: 50%;
+}
+
+
+.chip:nth-child(1) {
+    top: 35px;
+    left: 60px;
+}
+
+
+.chip:nth-child(2) {
+    top: 80px;
+    left: 130px;
+}
+
+
+.chip:nth-child(3) {
+    top: 140px;
+    left: 65px;
+}
+
+
+.chip:nth-child(4) {
+    top: 155px;
+    left: 145px;
+}
+
+
+.chip:nth-child(5) {
+    top: 105px;
+    left: 40px;
+}
+
+
+.chip:nth-child(6) {
+    top: 45px;
+    left: 150px;
+}
+
+
+.chip:nth-child(7) {
+    top: 115px;
+    left: 105px;
+}
+
+
+.click-text {
+    margin-top: 25px;
+
+    color: #8a6a4a;
+}
+
+
+/* SHOP */
 
 .shop {
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
+    padding: 35px;
+
+    overflow-y: auto;
 }
 
-.upgrade-btn {
-  padding: 12px 24px;
-  font-size: 16px;
-  font-family: inherit;
-  cursor: pointer;
-  background-color: #e67e22;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  transition: background-color 0.2s;
+
+.shop h2 {
+    color: #7b4b25;
+
+    margin-bottom: 20px;
 }
 
-.upgrade-btn:hover:not(:disabled) {
-  background-color: #d35400;
+
+.upgrade {
+    background: #f3dfc2;
+
+    border:
+        2px solid #d7b98d;
+
+    border-radius: 12px;
+
+    padding: 18px;
+
+    margin-bottom: 15px;
 }
 
-.upgrade-btn:disabled {
-  background-color: #7f8c8d;
-  cursor: not-allowed;
-  opacity: 0.7;
+
+.upgrade h3 {
+    color: #593519;
+
+    margin-bottom: 8px;
 }
+
+
+.upgrade p {
+    color: #765c42;
+
+    margin-bottom: 12px;
+}
+
+
+/* BUTTONS */
+
+button {
+    border: none;
+
+    background: #9b5b2b;
+
+    color: white;
+
+    padding: 10px 18px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+}
+
+
+button:hover {
+    background: #7b421e;
+}
+
+
+button:disabled {
+    background: #aaa;
+
+    cursor: not-allowed;
+}
+
+
+.reset {
+    margin-top: 20px;
+
+    background: #b33a3a;
+}
+
+
+.reset:hover {
+    background: #8f2929;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .game {
+        grid-template-columns: 1fr;
+    }
+
+
+    .left {
+        border-right: none;
+
+        border-bottom:
+            2px solid #ead8bd;
+    }
+
+}
+```

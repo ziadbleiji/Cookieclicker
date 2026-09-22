@@ -1,20 +1,129 @@
-                <!DOCTYPE html>
-<html lang="nl">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Cookie Clicker</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="body">
-   <main class="main">
-    <div class="container">
-        <h1>Crazy John Cookie Farm</h1>
-        <p>Click the cookie to earn cookies!</p>
-        <button id="cookie-button" class="cookie-button">🍪</button>
-        <p>Cookies: <span id="cookie-count">0</span></p>
-    </div>
-    <script src="script.js"></script>
 
+
+<body>
+
+    <div class="game">
+
+        <!-- Left Side -->
+        <div class="left">
+
+            <h1>🍪 Cookie Clicker</h1>
+
+            <div id="counter">
+                0 cookies
+            </div>
+
+            <div id="perSecond">
+                0 cookies / second
+            </div>
+
+            <div id="cookie">
+
+                <div class="chip"></div>
+                <div class="chip"></div>
+                <div class="chip"></div>
+                <div class="chip"></div>
+                <div class="chip"></div>
+                <div class="chip"></div>
+                <div class="chip"></div>
+
+            </div>
+
+            <p class="click-text">
+                Click the cookie!
+            </p>
+
+        </div>
+
+
+        <!-- Shop -->
+        <div class="shop">
+
+            <h2>🛒 Upgrades</h2>
+
+            <div class="upgrade">
+
+                <h3>👆 Better Finger</h3>
+
+                <p>
+                    +1 cookie per click
+                </p>
+
+                <button id="fingerButton">
+                    Buy — 20 🍪
+                </button>
+
+            </div>
+
+
+            <div class="upgrade">
+
+                <h3>👵 Grandma</h3>
+
+                <p>
+                    +1 cookie per second
+                </p>
+
+                <button id="grandmaButton">
+                    Buy — 100 🍪
+                </button>
+
+            </div>
+
+
+            <div class="upgrade">
+
+                <h3>🏭 Cookie Factory</h3>
+
+                <p>
+                    +10 cookies per second
+                </p>
+
+                <button id="factoryButton">
+                    Buy — 500 🍪
+                </button>
+
+            </div>
+
+
+            <div class="upgrade">
+
+                <h3>🚀 Cookie Machine</h3>
+
+                <p>
+                    +50 cookies per second
+                </p>
+
+                <button id="machineButton">
+                    Buy — 2000 🍪
+                </button>
+
+            </div>
+
+
+            <button
+                class="reset"
+                onclick="resetGame()">
+
+                Reset Game
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+<script src="cookies.js"></script>
 </body>
 </html>
