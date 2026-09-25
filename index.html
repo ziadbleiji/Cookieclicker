@@ -1,129 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Cookie Clicker</title>
-
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Simpele Cookie Clicker</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
-
 <body>
+<div class="wrap">
+  <h1>🍪 Cookie Clicker</h1>
+  <div class="main">
+    <div class="left-panel">
+      <div class="stats">
+        <div class="count" id="cookieCount">0</div>
+        <div>cookies</div>
+        <div id="cps">0 cookies per seconde</div>
+      </div>
 
-    <div class="game">
-
-        <!-- Left Side -->
-        <div class="left">
-
-            <h1>🍪 Cookie Clicker</h1>
-
-            <div id="counter">
-                0 cookies
-            </div>
-
-            <div id="perSecond">
-                0 cookies / second
-            </div>
-
-            <div id="cookie">
-
-                <div class="chip"></div>
-                <div class="chip"></div>
-                <div class="chip"></div>
-                <div class="chip"></div>
-                <div class="chip"></div>
-                <div class="chip"></div>
-                <div class="chip"></div>
-
-            </div>
-
-            <p class="click-text">
-                Click the cookie!
-            </p>
-
-        </div>
-
-
-        <!-- Shop -->
-        <div class="shop">
-
-            <h2>🛒 Upgrades</h2>
-
-            <div class="upgrade">
-
-                <h3>👆 Better Finger</h3>
-
-                <p>
-                    +1 cookie per click
-                </p>
-
-                <button id="fingerButton">
-                    Buy — 20 🍪
-                </button>
-
-            </div>
-
-
-            <div class="upgrade">
-
-                <h3>👵 Grandma</h3>
-
-                <p>
-                    +1 cookie per second
-                </p>
-
-                <button id="grandmaButton">
-                    Buy — 100 🍪
-                </button>
-
-            </div>
-
-
-            <div class="upgrade">
-
-                <h3>🏭 Cookie Factory</h3>
-
-                <p>
-                    +10 cookies per second
-                </p>
-
-                <button id="factoryButton">
-                    Buy — 500 🍪
-                </button>
-
-            </div>
-
-
-            <div class="upgrade">
-
-                <h3>🚀 Cookie Machine</h3>
-
-                <p>
-                    +50 cookies per second
-                </p>
-
-                <button id="machineButton">
-                    Buy — 2000 🍪
-                </button>
-
-            </div>
-
-
-            <button
-                class="reset"
-                onclick="resetGame()">
-
-                Reset Game
-
-            </button>
-
-        </div>
-
+      <div class="cookie-area">
+        <button id="cookieBtn">🍪</button>
+      </div>
     </div>
 
+    <div class="right-panel">
+      <div class="shop">
+        <h2>Winkel</h2>
+        <div class="item" id="item-cursor">
+          <div class="info">
+            <span class="name">👆 Cursor</span>
+            <span class="desc">Elk +0.1 cookies per seconde</span>
+          </div>
+          <button data-id="cursor">Koop (10)</button>
+        </div>
+        <div class="item" id="item-grandma">
+          <div class="info">
+            <span class="name">👵 Oma</span>
+            <span class="desc">Elk +1 cookie per seconde</span>
+          </div>
+          <button data-id="grandma">Koop (50)</button>
+        </div>
+        <div class="item" id="item-farm">
+          <div class="info">
+            <span class="name">🚜 Boerderij</span>
+            <span class="desc">Elk +8 cookies per seconde</span>
+          </div>
+          <button data-id="farm">Koop (300)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<script src="cookies.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
