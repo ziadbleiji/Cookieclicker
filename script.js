@@ -1,77 +1,47 @@
-// ---- spelstatus (alles wordt in deze paar variabelen bijgehouden) ----
-let cookies = 0;
+let koekjes = 0;
+let automatischeKlikkers = 0;
+let kostenAutomatischeKlikker = 15;
 
-const buildings = {
-  cursor: { name: "Cursor", baseCost: 10, cps: 0.1, count: 0 },
-  grandma: { name: "Oma", baseCost: 50, cps: 1, count: 0 },
-  farm: { name: "Boerderij", baseCost: 300, cps: 8, count: 0 }
-};
+const koekjesAantalEl = document.getElementById('cookie-count');
+const koekjeKnop = document.getElementById('cookie');
+const koopKlikkerKnop = document.getElementById('buy-clicker');
+const kostenKlikkerEl = document.getElementById('autoclicker-cost');
 
-// elke volgende aankoop wordt 15% duurder dan de vorige (standaardformule voor dit soort spellen)
-function currentCost(b) {
-  return Math.ceil(b.baseCost * Math.pow(1.15, b.count));
-}
 
-function totalCPS() {
-  let total = 0;
-  for (const key in buildings) {
-    total += buildings[key].cps * buildings[key].count;
-  }
-  return total;
-}
+function updateInterface() {
+  koekjesAantalEl.textContent = koekjes;
+  kostenKlikkerEl.textContent = kostenAutomatischeKlikker;
 
-function fmt(n) {
-  return Math.floor(n).toLocaleString("nl-NL");
-}
-
-function render() {
-  document.getElementById("cookieCount").textContent = fmt(cookies);
-  document.getElementById("cps").textContent = totalCPS().toFixed(1) + " cookies per seconde";
-  for (const key in buildings) {
-    const b = buildings[key];
-    const btn = document.querySelector(`#item-${key} button`);
-    const cost = currentCost(b);
-    btn.textContent = `Koop (${fmt(cost)}) — Je hebt: ${b.count}`;
-    btn.disabled = cookies < cost;
+  // Schakel de knop uit als er niet genoeg koekjes zijn
+  if (koekjes < kostenAutomatischeKlikker) {
+    koopKlikkerKnop.disabled = true;
+  } else {
+    koopKlikkerKnop.disabled = false;
   }
 }
 
-// ---- klikken op de cookie ----
-document.getElementById("cookieBtn").addEventListener("click", (e) => {
-  cookies += 1;
-  render();
-  spawnFloatingText(e.clientX, e.clientY, "+1");
+koekjeKnop.addEventListener('click', () => {
+  koekjes++;
+  updateInterface();
 });
 
-// ---- gebouwen kopen ----
-document.querySelectorAll(".shop button").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const key = btn.dataset.id;
-    const b = buildings[key];
-    const cost = currentCost(b);
-    if (cookies >= cost) {
-      cookies -= cost;
-      b.count += 1;
-      render();
-    }
-  });
+koopKlikkerKnop.addEventListener('click', () => {
+  if (koekjes >= kostenAutomatischeKlikker) {
+    koekjes -= kostenAutomatischeKlikker;
+    automatischeKlikkers++;
+    
+  
+    kostenAutomatischeKlikker = Math.floor(kostenAutomatischeKlikker * 1.5);
+    
+    updateInterface();
+  }
 });
 
-// ---- automatisch cookies genereren elke seconde ----
+// 6. Automatische koekjesproductie (elke seconde)
 setInterval(() => {
-  cookies += totalCPS();
-  render();
+  koekjes += automatischeKlikkers;
+  updateInterface();
 }, 1000);
 
-// ---- klein animatie-effect voor het zwevende getal bij een klik ----
-function spawnFloatingText(x, y, text) {
-  const el = document.createElement("div");
-  el.className = "float";
-  el.textContent = text;
-  el.style.left = x + "px";
-  el.style.top = y + "px";
-  document.body.appendChild(el);
-  setTimeout(() => el.remove(), 800);
-}
-
-render();
+// Eerste update bij het starten van het spel
+updateInterface();
