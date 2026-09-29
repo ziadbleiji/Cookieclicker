@@ -1,65 +1,172 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Tahoma, Arial, sans-serif;
   text-align: center;
   background-color: #2c3e50;
   color: #ecf0f1;
   margin: 0;
-  padding: 50px 20px;
+  padding: 30px 20px;
   user-select: none; /* Voorkomt tekstselectie bij snel klikken */
 }
 
-.Top-sectie{
-  margin-top: 5px;
+/* Het hele scherm zoals in de wireframe */
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  border: 2px solid #ecf0f1;
+}
+
+/* Bovenbalk met hamburger menu */
+.Top-sectie {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-.button-menu{
-  display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
-  margin-top: 0;
+  min-height: 64px;
+  padding: 0 16px;
+  border-bottom: 2px solid #ecf0f1;
 }
 
-.main{
-  margin-left: 20px;
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  background: none;
+  border: 2px solid #ecf0f1;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
-.game-container {
-  max-width: 500px;
-  margin: 0 auto;
+.hamburger span {
+  display: block;
+  height: 3px;
+  background-color: #ecf0f1;
+  border-radius: 2px;
+}
+
+.hamburger:focus-visible,
+.upgrade-btn:focus-visible,
+.cookie-btn:focus-visible,
+.menu-item:focus-visible {
+  outline: 3px solid #f0c14b;
+  outline-offset: 2px;
+}
+
+.menu {
+  position: absolute;
+  top: 100%;
+  left: 16px;
+  z-index: 10;
+  min-width: 180px;
+  background-color: #34495e;
+  border: 2px solid #ecf0f1;
+  border-radius: 6px;
+}
+
+.menu[hidden] {
+  display: none;
+}
+
+.menu-item {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: inherit;
+  font-size: 16px;
+  text-align: left;
+  color: #ecf0f1;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  background-color: #3d566e;
+}
+
+/* Twee kolommen: links het spel, rechts de vakken */
+.game-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 600px;
+}
+
+.panel {
+  padding: 20px;
+}
+
+.main {
+  border-right: 2px solid #ecf0f1;
+}
+
+.game-container h1 {
+  margin: 20px 0 30px;
+  font-size: 28px;
+}
+
+.stats {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0 0 8px;
+}
+
+.cps {
+  margin: 0;
+  font-size: 16px;
 }
 
 /* Support both class names used in branches */
 .cookie-btn, .cookie-button {
   font-size: 100px;
+  width: 200px;
+  height: 200px;
+  line-height: 1;
   border-radius: 50%;
-  background-color: #f0c14b;
+  background-color: #96520a;
   border: none;
   cursor: pointer;
   transition: transform 0.1s ease;
-  outline: none;
-  margin: 50px;
+  margin: 40px 0;
 }
 
 .cookie-btn:active {
   transform: scale(0.9);
 }
 
-.stats {
-  font-size: 28px;
-  font-weight: bold;
-  margin: 20px 0;
+/* Rechterkolom: drie gelijke vakken onder elkaar */
+.side {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.side .panel + .panel {
+  border-top: 2px solid #ecf0f1;
 }
 
 .shop {
-  margin-top: 30px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.shop h2 {
+  margin: 0;
+  font-size: 20px;
 }
 
 .upgrade-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  max-width: 360px;
   padding: 12px 24px;
   font-size: 16px;
   font-family: inherit;
@@ -71,6 +178,11 @@ body {
   transition: background-color 0.2s;
 }
 
+.upgrade-btn small {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
 .upgrade-btn:hover:not(:disabled) {
   background-color: #d35400;
 }
@@ -79,4 +191,23 @@ body {
   background-color: #7f8c8d;
   cursor: not-allowed;
   opacity: 0.7;
+}
+
+/* Op smalle schermen komen de kolommen onder elkaar */
+@media (max-width: 720px) {
+  .game-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .main {
+    border-right: none;
+    border-bottom: 2px solid #ecf0f1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cookie-btn,
+  .upgrade-btn {
+    transition: none;
+  }
 }

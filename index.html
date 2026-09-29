@@ -1,26 +1,60 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cookie Clicker</title>
+    <title>Crazy John Cookie Farm</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main class="game-container">
-      <h1>Crazy John Cookie Farm</h1>
-      <p>Click the cookie to earn cookies!</p>
-
-      <button id="cookie" class="cookie-btn" aria-label="Cookie button">🍪</button>
-
-      <p class="stats">Cookies: <span id="cookie-count">0</span></p>
-
-      <div class="shop">
-        <button id="buy-clicker" class="upgrade-btn" type="button">
-          Buy Auto Clicker: <span id="autoclicker-cost">15</span>
+    <div class="app">
+      <!-- Bovenbalk: hamburger menu -->
+      <header class="Top-sectie">
+        <button id="menu-toggle" class="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+          <span></span><span></span><span></span>
         </button>
+        <nav id="menu" class="menu" hidden>
+          <button id="reset" class="menu-item" type="button">Reset game</button>
+        </nav>
+      </header>
+
+      <div class="game-layout">
+        <!-- Linkerkant: naam, score, cps en koekje -->
+        <section class="panel main game-container">
+          <h1>Crazy John Cookie Farm</h1>
+          <p class="stats">Cookies: <span id="cookie-count">0</span></p>
+          <p class="cps">Cookies per second: <span id="cps">0</span></p>
+          <button id="cookie" class="cookie-btn" type="button" aria-label="Cookie button">🍪</button>
+        </section>
+
+        <!-- Rechterkant: drie vakken onder elkaar -->
+        <div class="side">
+          <section class="panel shop">
+            <h2>Upgrades</h2>
+            <button id="buy-finger" class="upgrade-btn" type="button">
+              Stronger fingers (+1 per click)
+              <small>Cost: <span id="finger-cost">50</span> · Level: <span id="finger-level">1</span></small>
+            </button>
+          </section>
+
+          <section class="panel shop">
+            <h2>Store</h2>
+            <button id="buy-clicker" class="upgrade-btn" type="button">
+              Auto Clicker (+1 per second)
+              <small>Cost: <span id="autoclicker-cost">15</span> · Owned: <span id="autoclicker-count">0</span></small>
+            </button>
+          </section>
+
+          <section class="panel shop">
+            <h2>Store 2</h2>
+            <button id="buy-grandma" class="upgrade-btn" type="button">
+              Grandma (+5 per second)
+              <small>Cost: <span id="grandma-cost">100</span> · Owned: <span id="grandma-count">0</span></small>
+            </button>
+          </section>
+        </div>
       </div>
-    </main>
+    </div>
 
     <script src="script.js" defer></script>
   </body>
