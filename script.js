@@ -9,7 +9,39 @@ const START = {
   omaKosten: 100,
 };
 
-let staat = { ...START };
+// Opslag (localStorage)
+const OPSLAG_SLEUTEL = 'koekjesspel-opslag';
+
+function opslaan() {
+  try {
+    localStorage.setItem(OPSLAG_SLEUTEL, JSON.stringify(staat));
+  } catch (err) {
+    console.error('Opslaan mislukt:', err);
+  }
+}
+
+function laden() {
+  try {
+    const tekst = localStorage.getItem(OPSLAG_SLEUTEL);
+    if (!tekst) return { ...START };
+
+    const opgeslagen = JSON.parse(tekst);
+    const nieuw = { ...START };
+
+    // Alleen bekende sleutels overnemen, en alleen als het geldige getallen zijn
+    for (const sleutel of Object.keys(START)) {
+      if (Number.isFinite(opgeslagen[sleutel])) {
+        nieuw[sleutel] = opgeslagen[sleutel];
+      }
+    }
+    return nieuw;
+  } catch (err) {
+    console.error('Laden mislukt:', err);
+    return { ...START };
+  }
+}
+
+let staat = laden();
 
 // Elementen
 const el = (id) => document.getElementById(id);
@@ -46,6 +78,8 @@ function updateInterface() {
   fingerKnop.disabled = staat.koekjes < staat.fingerKosten;
   klikkerKnop.disabled = staat.koekjes < staat.klikkerKosten;
   omaKnop.disabled = staat.koekjes < staat.omaKosten;
+
+  opslaan();
 }
 
 // Klikken op het koekje
@@ -103,6 +137,7 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') zetMenu(false);
 });
 
+// Reset: terug naar de beginwaarden (wordt daarna opnieuw opgeslagen)
 resetKnop.addEventListener('click', () => {
   staat = { ...START };
   zetMenu(false);
